@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, setUserToken } from "./features/spotify/spotifySlice";
+import {
+  setUser,
+  setUserToken,
+  setPlaylist,
+} from "./features/spotify/spotifySlice";
+import config from "./config/spotify.config";
 import "./App.css";
 import Login from "./components/Login";
 import Player from "./components/Player.jsx";
@@ -32,10 +37,16 @@ function App() {
       spotify.getMe().then((user) => {
         dispatch(setUser(user));
       });
+
+      // You can get spotify userID from: spotify account > username
+
+      spotify.getUserPlaylists(config.spotify_userId).then((playlists) => {
+        dispatch(setPlaylist(playlists));
+      });
     }
   }, []);
 
-  console.log(spotifyUser);
+  // console.log(spotifyUser);
 
   return (
     // BEM convention

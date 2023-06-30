@@ -1,0 +1,26 @@
+.sidebar {
+  height: 100vh;
+  padding: 20px;
+  flex: 20%;
+  background-color: #000;
+  color: white;
+}
+
+.sidebar__image {
+  margin-right: auto;
+  height: 70px;
+  /* padding: 7px; */
+}
+
+.playlists__title {
+  font-size: 12px;
+  margin-left: 10px;
+  padding: 5px;
+  font-weight: 800px;
+}
+
+.sidebar > hr {
+  border: 1px solid #282828;
+  width: 90%;
+  margin: 10px auto;
+}

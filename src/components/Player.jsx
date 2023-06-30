@@ -1,15 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Sidebar from "./Sidebar";
+import Body from "./Body";
+import Footer from "./Footer";
+import "../styles/Player.css";
 
 export default function Player() {
   const currentUser = useSelector((state) => state.spotify.user);
-  const currentToken = useSelector((state) => state.spotify.token);
-
   return (
-    <div>
-      <h1>
-        Welcome Back {currentUser?.display_name} {currentToken}!! What's Up..
-      </h1>
+    <div className="player">
+      <div className="player__body">
+        <Sidebar />
+        <Body />
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   user: null,
-  playlist: [],
+  playlists: [],
   playing: false,
   item: null,
   token: null,
@@ -25,9 +25,16 @@ export const spotifySlice = createSlice({
         token: action.payload,
       };
     },
+
+    setPlaylist: (state, action) => {
+      return {
+        ...state,
+        playlists: action.payload,
+      };
+    },
   },
 });
 
-export const { setUser, setUserToken } = spotifySlice.actions;
+export const { setUser, setUserToken, setPlaylist } = spotifySlice.actions;
 
 export default spotifySlice.reducer;
