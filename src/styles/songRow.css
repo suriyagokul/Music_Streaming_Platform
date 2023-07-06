@@ -1,0 +1,52 @@
+.songrow {
+  margin-right: 30px;
+  margin-left: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.songrow > img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 20px;
+  /* border-radius: 5px; */
+}
+
+.songrow:hover {
+  background-color: #2a2a2a;
+  transition: 0.1s transform ease-in;
+  transform: scale(1.001);
+}
+
+.song--name {
+  font-size: 14px;
+  font-weight: 100;
+  transition: 0.2ms ease-in;
+}
+
+.song--name:hover {
+  color: green;
+}
+
+.singer {
+  font-size: 10px;
+  color: gray;
+}
+
+.track--icon {
+  margin-right: 20px;
+  background: none;
+  border: 0px;
+  color: white;
+}
+
+.track--icon:hover {
+  color: green;
+  cursor: pointer;
+}

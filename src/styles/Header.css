@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.header__left {
+  display: flex;
+  background-color: white;
+  color: grey;
+  border-radius: 30px;
+  padding: 10px;
+  align-items: center;
+  flex: 0.5;
+  min-width: 70px;
+}
+
+.header__left > input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__right:hover {
+  cursor: pointer;
+}
+
+.header__right > .MuiAvatar-root {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.header__right > h4 {
+  color: white;
+  margin-left: 10px;
+}

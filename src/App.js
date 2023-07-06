@@ -5,6 +5,7 @@ import {
   setUser,
   setUserToken,
   setPlaylist,
+  setDiscoverWeekly,
 } from "./features/spotify/spotifySlice";
 import config from "./config/spotify.config";
 import "./App.css";
@@ -19,6 +20,14 @@ function App() {
   let spotifyUser = useSelector((state) => state.spotify.user);
   const dispatch = useDispatch();
 
+  const discover_weekly = useSelector((state) => state.spotify.discover_weekly);
+
+  let myplaylist = discover_weekly?.external_urls?.spotify
+    ?.split("/")
+    .slice(-1)[0];
+
+  console.log(myplaylist);
+
   useEffect(() => {
     const hash = getTokenFromUrl(); // gives obj having access_token, expires in..etc
     window.location.hash = ""; // hide the access token in url
@@ -27,10 +36,9 @@ function App() {
 
     if (_token) {
       setToken(_token);
+      localStorage.setItem("spotifyToken", _token);
 
       dispatch(setUserToken(_token));
-
-      console.log(spotify);
 
       spotify.setAccessToken(_token);
 
@@ -38,19 +46,23 @@ function App() {
         dispatch(setUser(user));
       });
 
-      // You can get spotify userID from: spotify account > username
+      console.log(spotifyUser);
 
-      spotify.getUserPlaylists(config.spotify_userId).then((playlists) => {
+      spotify.getUserPlaylists(spotifyUser?.id).then((playlists) => {
         dispatch(setPlaylist(playlists));
       });
-    }
-  }, []);
 
-  // console.log(spotifyUser);
+      spotify.getPlaylist("3moqBiqnk7fq6LUaTKYCST").then((res) => {
+        dispatch(setDiscoverWeekly(res));
+      });
+    }
+  }, [dispatch, spotifyUser?.id]);
 
   return (
     // BEM convention
-    <div className="app">{token ? <Player /> : <Login />}</div>
+    <div className="app">
+      {token ? <Player spotify={spotify} /> : <Login />}
+    </div>
   );
 }
 

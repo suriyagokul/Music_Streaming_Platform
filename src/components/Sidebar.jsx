@@ -6,7 +6,7 @@ import LibraryMusicOutlinedIcon from "@mui/icons-material/LibraryMusicOutlined";
 import SidebarOption from "./SidebarOption";
 import "../styles/Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ spotify }) => {
   let userPlaylist = useSelector((state) => state.spotify.playlists);
 
   // console.log(userPlaylist); returns list of playlists in items array
@@ -28,7 +28,11 @@ const Sidebar = () => {
       <hr />
 
       {userPlaylist?.items?.map((playlist) => (
-        <SidebarOption title={playlist.name} />
+        <SidebarOption
+          key={playlist?.id}
+          title={playlist.name}
+          spotify={spotify}
+        />
       ))}
     </div>
   );

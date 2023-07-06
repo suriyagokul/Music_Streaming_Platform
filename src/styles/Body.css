@@ -1,7 +1,71 @@
-.body {
+.content {
   height: 100vh;
+  overflow-y: scroll;
   padding: 20px;
   flex: 80%;
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
   color: white;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.player__body {
+  display: flex;
+  align-items: center;
+}
+
+.body__infotext {
+  margin-left: 20px;
+  flex: 1;
+}
+
+.body__infotext > h4 {
+  font-size: 48px;
+  margin-bottom: 10px;
+  width: 40px;
+}
+
+.body__infotext > p {
+  font-size: 14px;
+}
+
+.player__body > img {
+  height: 20vw;
+  margin: 0 20px;
+  box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+}
+
+.body__icons {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.body__icons > .MuiSvgIcon-root {
+  margin-right: 20px;
+}
+
+.body__shuffle {
+  font-size: 80px !important;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.body__shuffle:hover {
+  transition: 0.1s transform ease-in;
+  transform: scale(1.08);
+}
+
+.icon__green {
+  color: #1ed15e;
+}
+
+.favourite--icon:hover {
+  color: green;
+  transition: 0.2s transform ease-in-out;
+  transform: scale(1.07);
 }
